@@ -71,7 +71,7 @@ public class Dog extends Pet implements Trained {
                 System.out.println("Собака побежала за палкой");
                 System.out.println("Собака принесла палку");
                 break;
-            case CMD_LITE_DOWN:
+            case CMD_LIE_DOWN:
                 System.out.println("Собака легла на пол");
             default:
                 System.out.println("Нет такой команды!");

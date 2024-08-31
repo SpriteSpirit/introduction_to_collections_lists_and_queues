@@ -1,6 +1,8 @@
 import animals.*;
 import exception.CantTalkException;
 
+import java.util.regex.Pattern;
+
 public class Main {
     public static void main(String[] args) {
         Cat begemot = new Cat("Бегемот", 1);
@@ -9,9 +11,10 @@ public class Main {
         Dog cerber = new Dog("Цербер", 100500);
         Parrot kesha = new Parrot("Кеша", 2);
 
-        murzik.addFriends(begemot);
-        murzik.addFriends(sharik);
-        murzik.addFriends(kesha);
+        // Заменили метод addFriends на геттер и добавление элемента списка
+        murzik.getFriends().add(0, begemot);
+        murzik.getFriends().add(sharik);
+        murzik.getFriends().add(kesha);
 
         for (Pet friend : murzik.getFriends()) {
             if (friend instanceof Cat) {
@@ -30,6 +33,8 @@ public class Main {
 
         murzik.removeFriend(sharik);
 
+        System.out.println(murzik.getFriends().size());
+
         for (int i = 0; i < murzik.getFriends().size(); i++) {
             System.out.println(murzik.getFriends().get(i).getName().toUpperCase());
         }
@@ -37,6 +42,11 @@ public class Main {
         System.out.println("Мурзик дружит с Бегемотом ? " + (murzik.getFriends().contains(begemot) ? "Да" : "Нет"));
         System.out.println("Мурзик дружит с Шариком ? " + (murzik.getFriends().contains(sharik) ? "Да" : "Нет"));
         System.out.println("Мурзик дружит с Цербером ? " + (murzik.getFriends().contains(cerber) ? "Да" : "Нет"));
+
+//        talk(sharik, murzik, kesha);
+        Pattern pattern = Pattern.compile("^([a-z0-9_.-]+)@([a-z0-9_\\.-]+)\\.([a-z\\.]{2,6})$", Pattern.CASE_INSENSITIVE);
+        System.out.println(pattern.matcher("test@example.com").matches());
+
     }
 
     public static void talk(Pet... pets) {
@@ -52,8 +62,8 @@ public class Main {
 
     public static void checkTrained(Trained... animals) {
         for (Trained animal : animals) {
-            for (TrainedCommand trainedCommand : animal.getTrainedCommands()) {
-                animal.doCommand(trainedCommand);
+            for (TrainedCommand ignored : animal.getTrainedCommands()) {
+                animal.doCommand(ignored);
             }
         }
     }

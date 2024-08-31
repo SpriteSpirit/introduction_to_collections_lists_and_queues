@@ -1,6 +1,7 @@
 package animals;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Cat extends Pet implements Trained {
@@ -41,8 +42,8 @@ public class Cat extends Pet implements Trained {
     }
 
     public class FavToy {
-        private final String name;
-        private final String type;
+        private String name;
+        private String type;
 
         public FavToy(
             String name,
@@ -66,7 +67,7 @@ public class Cat extends Pet implements Trained {
     }
 
     private FavToy toy;
-    private final ArrayList<Pet> friends;
+    private List<Pet> friends;
     private Breed breed;
 
     public Cat(String name) {
@@ -80,7 +81,7 @@ public class Cat extends Pet implements Trained {
     public Cat(String name, int age) {
        super(name, age);
 
-        friends = new ArrayList<>();
+        friends = new LinkedList<>();
         count++;
     }
 
@@ -107,14 +108,14 @@ public class Cat extends Pet implements Trained {
         System.out.println("Пью воду");
     }
 
-    public ArrayList<Pet> getFriends() {
-        return new ArrayList<>(friends);
+    public List<Pet> getFriends() {
+        return friends;
     }
 
-    public void addFriends(Pet friend) {
-        this.friends.add(friend);
-        System.out.println(getName() + " подружился с " + friend.getName());
-    }
+//    public void addFriends(Pet friend) {
+//        this.friends.add(friend);
+//        System.out.println(getName() + " подружился с " + friend.getName());
+//    }
 
     public void removeFriend(Pet oldFriend) {
         friends.remove(oldFriend);

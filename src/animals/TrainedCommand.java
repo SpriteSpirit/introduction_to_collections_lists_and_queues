@@ -4,7 +4,7 @@ public enum TrainedCommand {
     CMD_SIT("Сидеть!"),
     CMD_VOICE("Голос!"),
     CMD_FETCH("Аппорт!"),
-    CMD_LITE_DOWN("Лежать!");
+    CMD_LIE_DOWN("Лежать!");
 
     private final String voiceCommand;
 
